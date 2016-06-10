@@ -1,6 +1,6 @@
 # Amcat version 1.4.1
 
-# VERSION 20160608_1
+# VERSION 20160610_1
 
 FROM phusion/baseimage:latest
 
@@ -18,8 +18,6 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
 
-#RUN apt-get update && apt-get -y install antiword unrtf rabbitmq-server python-pylibmc python-virtualenv python-dev python-pip postgresql postgresql-contrib postgresql-server-dev-9.3 libxml2-dev libxslt-dev python-pdfminer graphviz pspp python-lxml python-amqplib python-psycopg2 python-requests python-pygments git libmemcached-dev
-
 RUN apt-get update && apt-get -y install antiword unrtf rabbitmq-server python-pip python-dev libxml2-dev libxslt-dev lib32z1-dev postgresql postgresql-server-dev-9.3 postgresql-contrib-9.3 python-virtualenv git graphviz
 
 # Install R
@@ -30,7 +28,6 @@ RUN sudo apt-get -y install r-base r-base-dev
 
 # Install AmCAT
 RUN git clone -b release-3.4 https://github.com/amcat/amcat.git
-#RUN git clone https://github.com/amcat/amcat.git
 
 # Create Python VirtualEnv
 #RUN virtualenv ~/amcat-env
