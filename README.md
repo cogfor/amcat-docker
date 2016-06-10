@@ -16,13 +16,12 @@ docker-compose -p amcat build --force-rm
 docker-compose -p amcat up -d
 ```
 
-
 ### Populate the database and set the elasticsearch mapping
 ```
 docker-compose -p amcat run --no-deps amcat python -m amcat.manage migrate
 ```
 
-You can now open the website at 192.168.99.100:8000 (or your docker ip address) and login using the credentials amcat/amcat. Don't forget to change this password.
+You can now open the website at [http://192.168.99.100:8000](http://192.168.99.100:8000) (or your docker ip address) and login using the credentials amcat/amcat. Don't forget to change this password.
 
 ### Create a super user
 
@@ -62,3 +61,11 @@ This may be useful for fixing errors or changing configuration.
 ```
 docker exec -it amcat_amcat-scraping_1 bash
 ```
+
+## TODO
+
+In random order:
+* Fix logstash ("logstash-*" index missing)
+* Fix RabbitMQ broker
+* Fix AmCAT query ("SearchParseException[failed to parse search source. unknown search element [facets]]") due to upgrade to Elasticsearch V2 (Haystack)
+
