@@ -18,16 +18,19 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
 
-#RUN apt-get update && apt-get -y install antiword unrtf rabbitmq-server python-virtualenv python3-pip postgresql postgresql-contrib postgresql-server-dev-9.3 python3-dev libxml2-dev libxslt-dev graphviz pspp python3-lxml python3-amqplib python3-psycopg2 python3-requests python3-pygments git 
-RUN apt-get update && apt-get -y install antiword unrtf rabbitmq-server python-virtualenv python-dev python-pip postgresql postgresql-contrib postgresql-server-dev-9.3 libxml2-dev libxslt-dev graphviz pspp python-lxml python-amqplib python-psycopg2 python-requests python-pygments git 
+#RUN apt-get update && apt-get -y install antiword unrtf rabbitmq-server python-pylibmc python-virtualenv python-dev python-pip postgresql postgresql-contrib postgresql-server-dev-9.3 libxml2-dev libxslt-dev python-pdfminer graphviz pspp python-lxml python-amqplib python-psycopg2 python-requests python-pygments git libmemcached-dev
+
+RUN apt-get update && apt-get -y install antiword unrtf rabbitmq-server python-pip python-dev libxml2-dev libxslt-dev lib32z1-dev postgresql postgresql-server-dev-9.3 postgresql-contrib-9.3 python-virtualenv git graphviz
+
 # Install R
 RUN sudo sh -c "echo 'deb https://cran.rstudio.com/bin/linux/ubuntu trusty/' > /etc/apt/sources.list.d/r-cran-trusty.list"
 RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 RUN sudo apt-get update 
-RUN sudo apt-get -y install r-base-dev
+RUN sudo apt-get -y install r-base r-base-dev
 
 # Install AmCAT
 RUN git clone -b release-3.4 https://github.com/amcat/amcat.git
+#RUN git clone https://github.com/amcat/amcat.git
 
 # Create Python VirtualEnv
 #RUN virtualenv ~/amcat-env

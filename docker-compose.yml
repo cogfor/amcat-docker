@@ -45,7 +45,7 @@ services:
       - elasticsearch
 
   kibana:
-    image: kibana:4.2
+    image: kibana:4.1
     #restart: always
     ports:
       - 5601:5601
@@ -63,7 +63,7 @@ services:
       - 5671
 
   amcat:
-    image: cogfor/amcat
+    image: cogfor/amcat:3.4
     build: ./amcat
     #restart: always
     command: bash -c "sleep 5; python -m amcat.manage runserver 0.0.0.0:8000"
