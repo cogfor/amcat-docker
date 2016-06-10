@@ -32,13 +32,13 @@ docker-compose -p amcat run --no-deps amcat python -m amcat.manage createsuperus
 ### Create a worker
 
 ```
-docker-compose -p amcat run --no-deps -e DJANGO_SETTINGS_MODULE=settings amcat celery -A amcat.amcatcelery worker -l INFO -Q amcat --broker amqp://guest:guest@rabbitmq//
+docker-compose -p amcat run --no-deps -e DJANGO_SETTINGS_MODULE=settings amcat celery -A amcat.amcatcelery worker -l INFO --broker amqp://guest:guest@amcat//
 ```
 
 or as a deamon
 
 ```
-docker-compose -p amcat run -d --no-deps -e DJANGO_SETTINGS_MODULE=settings amcat celery -A amcat.amcatcelery worker -l INFO -Q amcat --broker amqp://guest:guest@rabbitmq//
+docker-compose -p amcat run -d --no-deps -e DJANGO_SETTINGS_MODULE=settings amcat celery -A amcat.amcatcelery worker -l INFO --broker amqp://guest:guest@amcat//
 ```
 
 ## Get content
@@ -66,6 +66,5 @@ docker exec -it amcat_amcat-scraping_1 bash
 
 In random order:
 * Fix logstash ("logstash-*" index missing)
-* Fix RabbitMQ broker
 * Fix AmCAT query ("SearchParseException[failed to parse search source. unknown search element [facets]]") due to upgrade to Elasticsearch V2 (Haystack)
 

@@ -66,7 +66,7 @@ services:
     image: cogfor/amcat:3.4
     build: ./amcat
     #restart: always
-    command: bash -c "sleep 5; python -m amcat.manage runserver 0.0.0.0:8000"
+    command: bash -c "service rabbitmq-server start; sleep 5; python -m amcat.manage runserver 0.0.0.0:8000"
     env_file:
       - ./amcat/amcat.env
     depends_on:
